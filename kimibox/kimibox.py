@@ -46,8 +46,7 @@ if __name__ == '__main__':
 	filename="kfp_"+sdate+"_"+stime+"_"+boxid+".txt"
 
 	paket={}
-	paket['jam']=stime
-	paket['tanggal']=sdate
+	paket['jam-kimibox']=sdate+" "+stime
 	paket['boxid']=boxid
 	paket['fingerprint']=file_hash
 
