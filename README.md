@@ -1,6 +1,6 @@
 # KIMI Platform
 
-Untuk penjelasan mengenai project ini, bisa dilihat di Wiki.
+Untuk penjelasan mengenai project ini, bisa dilihat di Wiki. https://github.com/KawalMusikIndonesia/Kimi/wiki
 
 ## Kimibox
 
