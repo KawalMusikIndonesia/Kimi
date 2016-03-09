@@ -8,3 +8,6 @@ Kemudian, kita install Rabbit MQ dengan cara:
 
 `sudo apt-get install rabbitmq-server`
 
+Cek status:
+
+`sudo rabbitmqctl status`
