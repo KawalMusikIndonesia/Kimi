@@ -1,62 +1,36 @@
-Berdasarkan penelusuran, ternyata acoustid dan musicbrainz hanya bisa digunakan untuk deteksi full song, dan bukan partial song. Padahal kita butuh deteksi partial song.
+#Kimibox 
 
-Karena itu kita coba untuk menggunakan partial recognition dengan petunjuk dari [Dejavu](https://github.com/worldveil/dejavu) yang terlihat cukup bagus.
+Di dalam kimibox, kita running 2 program:
 
-#Setting di Debian
+1. kimibox.sh
+2. kimibox_uploader.sh
 
-Dejavu ditulis menggunakan python, dan kita perlu melakukan instalasi beberapa python library beserta juga MySQL. Sayangnya, petunjuk yg tersedia adalah untuk Fedora linux, dan saya biasanya menggunakan Debian. Jadi saya coba buat instalasi menggunakan Debian.
+##Kimibox.sh
 
-Kita bersihkan dulu server Debian:
+Tugasnya adalah menunggu setiap 1 menit dan rekam selama 10 detik.
 
-```
-$ sudo apt-get update
-$ sudo apt-get upgrade
-```
+Karena merekam belum bisa dilakukan (belum program di CHIP atau raspberry), maka skenario seperti berikut:
 
-##Install MySQL Server
+1. Tunggu selama 1 menit
+2. Recording selama 10 detik (belum dilakukan)
+3. Hasil recording adalah file test3.mp3
+4. Dari hasil recording ini di buat file mp3 -> <boxid><timestamp>.mp3
+5. Di copy ke directpry `mp3_result` untuk siap di upload
 
-```
-$ sudo apt-get install mysql-server mysql-client
-```
-Untuk password mysql, kita gunakan saja `Kimi123` 
+##Kimibox_uploader.sh
 
-##Install Python library
-
-Jika kita belum punya pip (python installer), kita install terlebih dulu:
-```
-$ sudo apt-get install python-pip python-dev build-essential 
-```
-Kita install semua python library yg dibutuhkan:
-```
-$ sudo apt-get install python-scipy
-$ sudo apt-get install python-matplotlib
-$ sudo apg-get install ffmpeg
-$ sudo apt-get install portaudio19-dev
-```
-Setelah itu kita gunakan pip untuk install yg lainnya:
-```
-$ sudo pip install PyAudio
-$ sudo pip install pydub
-```
-
-Sampai disini harusnya sudah selesai semua, dan kita bisa lanjutkan untuk masuk ke Dejavu.
-
-##Kimibox.py
-
-Untuk menjalankan kimibox.py, gunakan seperti ini;
-
-USAGE: **python kimibox.py -p <boxid> file <nama file>**
-
-Contohnya:
-
-`python kimibox.py -p 29102 file test2.mp3`
-
-Result:
+Tugasnya adalah mengawasi directory dan melakukan upload. Sebelumnya install berikut:
 
 ```
-{"boxid": "3523432", "jam-kimibox": "2016/03/11 14:42:46", "fingerprint": "F846E67928F78A795958730139E8D841C039909D"}
- [x] Sent 1 message
- ```
- 
- File fingerprint dari `test2.mp3` sudah dipost ke server.
+sudo apt-get install inotify-tools
+sudo apt-get install curl
+```
+
+Tugas dari aplikasi ini adalah:
+
+1. Monitor directory `mp3_result` untuk semua perubahan
+2. List semua files, dan upload satu per satu ke server
+3. Pindahkan yg suda di upload ke directory `mp3_uploaded` -> untuk dibersihkan oleh cron nantinya
+
+
 
