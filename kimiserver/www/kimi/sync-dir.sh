@@ -1,1 +1,1 @@
-rsync -rtv /var/www/kimi/ .
+rsync -atv /var/www/kimi/ .
