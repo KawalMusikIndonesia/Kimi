@@ -1,6 +1,6 @@
 boxid=3579
 mp3_filename=test3.mp3
-waitingtime=10
+waitingtime=2
 post_url=http://theresia.jaskapital.com/kimi/upload.php
 search_dir="mp3_result"
 uploaded_dir="mp3_uploaded"

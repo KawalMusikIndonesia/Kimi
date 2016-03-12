@@ -23,10 +23,13 @@ channel.queue_declare(queue='paket-kimi')
 
 
 def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
+    #print(" [x] Received %r" % body)
     # djv = init(config_file)
     djv = init("dejavu.cnf.SAMPLE")
-    opt_arg="/var/www/kimi/uploads/3579-20160312-150424.mp3"
+    client_data=json.loads(body)
+    namafile=client_data['namafile']
+    print "Received >>> " + namafile
+    opt_arg="/var/www/kimi/uploads/" + namafile
     song = djv.recognize(FileRecognizer, opt_arg)
     print(song)
 
