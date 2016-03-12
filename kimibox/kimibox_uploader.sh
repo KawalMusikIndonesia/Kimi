@@ -9,9 +9,6 @@
 #__email__ = "izak.jenie@gmail.com"
 #__status__ = "Prototype"
 
-search_dir="mp3_result"
-uploaded_dir="mp3_uploaded"
-post_url=http://theresia.jaskapital.com/kimi/upload.php
 
 source kimibox.cnf
 
