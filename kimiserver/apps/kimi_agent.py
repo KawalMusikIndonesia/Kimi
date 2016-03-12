@@ -1,4 +1,12 @@
 #!/usr/bin/python
+"""Kimi_agent.py"""
+"""Ambil paket-kimi dari MQ dan recognize dengan fingerprint di database"""
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Izak Jenie"
+__email__ = "izak.jenie@gmail.com"
+__status__ = "Prototype"
+
 
 import os
 import sys

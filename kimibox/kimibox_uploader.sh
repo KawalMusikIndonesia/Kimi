@@ -1,6 +1,13 @@
 #!/bin/bash
-# Kimi uploader 1.0
-# IzakJenie, March 2016
+#Kimibox_uploader.sh    
+#Cek file di directory dan upload ke KIMI server
+#perlu apt-get install inotify-tools
+#
+#__license__ = "GPL"
+#__version__ = "1.0"
+#__maintainer__ = "Izak Jenie"
+#__email__ = "izak.jenie@gmail.com"
+#__status__ = "Prototype"
 
 search_dir="mp3_result"
 uploaded_dir="mp3_uploaded"

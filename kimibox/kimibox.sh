@@ -1,4 +1,11 @@
 #!/bin/bash
+#Kimibox.sh
+#Rekam dan package partial file mp3 untuk siap dicek secara fingerprint.
+#__license__ = "GPL"
+#__version__ = "1.0"
+#__maintainer__ = "Izak Jenie"
+#__email__ = "izak.jenie@gmail.com"
+#__status__ = "Prototype"
 
 source kimibox.cnf
 while :
