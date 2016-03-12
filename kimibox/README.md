@@ -34,6 +34,18 @@ Tugas dari aplikasi ini adalah:
 
 Untuk uploadnya, di lakukan ke http://kimi.jaskapital.com/upload.php
 
+##kimibox.cnf
+Berikut adalah config untuk aplikasi kimibox
+
+```
+boxid=3579
+mp3_filename=test3.mp3
+waitingtime=10
+post_url=http://kimi.jaskapital.com/kimi/upload.php
+search_dir="mp3_result"
+uploaded_dir="mp3_uploaded"
+```
+
 ##upload.php
 
 ```php
