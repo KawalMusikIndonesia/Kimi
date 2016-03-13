@@ -146,6 +146,8 @@ class Dejavu(object):
         if song:
             # TODO: Clarify what `get_song_by_id` should return.
             songname = song.get(Dejavu.SONG_NAME, None)
+            # check isrc
+            songisrc=song.get(Database.FIELD_FILE_SHA1,None)
         else:
             return None
 
@@ -156,10 +158,12 @@ class Dejavu(object):
         song = {
             Dejavu.SONG_ID : song_id,
             Dejavu.SONG_NAME : songname,
+            Database.FIELD_ISRC : songisrc,
             Dejavu.CONFIDENCE : largest_count,
             Dejavu.OFFSET : int(largest),
             Dejavu.OFFSET_SECS : nseconds,
-            Database.FIELD_FILE_SHA1 : song.get(Database.FIELD_FILE_SHA1, None),}
+            #Database.FIELD_FILE_SHA1 : song.get(Database.FIELD_FILE_SHA1, None),
+            }
         return song
 
     def recognize(self, recognizer, *options, **kwoptions):

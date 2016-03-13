@@ -40,6 +40,9 @@ def callback(ch, method, properties, body):
     opt_arg="/var/www/kimi/uploads/" + namafile
     song = djv.recognize(FileRecognizer, opt_arg)
     print(song)
+    print song["song_name"]
+    print song["offset_seconds"]
+    print "--------------------"
 
 def init(configpath):
     """ 
