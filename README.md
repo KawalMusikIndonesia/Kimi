@@ -46,6 +46,7 @@ Script ini akan upload semua file di `~/kimi/kimibox/mp3_result` dan setelahnya 
 Untuk memastikan Kimi server berjalan, harus diinstall beberapa komponen, bisa di lihat di `~/kimi/kimiserver`.
 
 Sebelumnya install dulu ikutin yg di sini https://github.com/KawalMusikIndonesia/kimi/tree/master/kimiserver/apps
+
 Setelah itu jalankan berikut (Phyton):
 
 ```
