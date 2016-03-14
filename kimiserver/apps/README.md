@@ -128,6 +128,11 @@ Dan masukkan isinya:
 ```
 
 Setelah di save. kita bisa coba recognize dengan perintah berikut:
+
+Kemudian kita install berikut:
+
+'pip install pika'
+
 ```
 $ python dejavu.py --recognize file test2.mp3
 ```
