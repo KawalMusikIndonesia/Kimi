@@ -2,18 +2,53 @@
 
 Untuk penjelasan mengenai project ini, bisa dilihat di Wiki. https://github.com/KawalMusikIndonesia/Kimi/wiki
 
-## Kimibox
+Cara running KIMI Platform (prototype):
 
-Box yang bertugas melaporkan lagu yg sedang di putar. Box ini akan mengambil suara dari mic setiap 1 menit dan membuat fingerprint untuk dikirimkan.
+```
+$ git clone https://github.com/KawalMusikIndonesia/kimi.git
+$ cd kimi
+```
 
-Yang sudah dibuat:
+##Apache
 
-1. Baca dari file dan buat fingerprint (python)
-2. Kirim fingerprint ke server (php)
+Pertama kita copy directory ke /var/www/kimi
 
-TODO: 
+```
+$ cd ~/kimi/kimiserver/www/kimi
+$ mkdir /var/www/kimi
+$ cp * /var/www/kimi
+```
 
-1. Di server akan dikirimkan ke Queue untuk di proses (php). Mungkin akan menggunakan rabbitmq (rabbitmq.com), supaya mudah di distribusikan ke banyak server.
-2. Membuat program untuk listen ke queue dimana paket dikirimkan, dan melakukan identifikasi lagu.
- 
+Sebelumnya harus install RabbitMQ supaya jalan. Coba lihat di petunjuk di `~/kimi/kimiserver/`.
+
+
+##Kimibox
+
+Kita running kimibox, untuk simpan mp3 dan upload.
+
+###di terminal ssh #1
+```
+$ cd ~/kimi/kimibox
+$ ./kimibox.sh
+```
+Script ini akan generate file khusus #box-timestamp.mp3 di directory `~/kimi/kimibox/mp3_result`.
+
+
+###di terminal ssh #2
+```
+$ cd ~/kimi/kimibox
+$ ./kimibox_uploader.sh
+```
+Script ini akan upload semua file di `~/kimi/kimibox/mp3_result` dan setelahnya memindahken ke directory `~/kimi/kimibox/mp3_uploaded`. File di directory `mp3_uploaded` setelahnya boleh di hapus.
+
+##KimiServer
+
+Untuk memastikan Kimi server berjalan, harus diinstall beberapa komponen, bisa di lihat di `~/kimi/kimiserver`.
+
+Setelah itu jalankan berikut (Phyton):
+
+```
+$ cd ~/kimi/kimiserver/apps
+$ python kimi_agent.py
+```
 
